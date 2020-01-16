@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{{ form.name.errors }}
+{{ form.non_field_errors}}
+
+{% if error %}
+{{ error }}
+<br />
+{% endif %}
+
+<style>
+body {
+    text-align: center;
+}
+form {
+    display: inline-block;
+}
+</style>
+
+<h1>Login</h1>
+<body>
+<form method="POST" action="{% url 'login' %}">
+  {% csrf_token %}
+  Username:
+  <br />
+  <input type="text" name="username"/>
+  <br />
+  Password:
+  <br />
+  <input type="password" name="password"/>
+  <br />
+  Confirm Password:
+  <br />
+  <input class="btn btn-primary" type="submit" value="Login"/>
+</form>
+</body>
+{% endblock %}
